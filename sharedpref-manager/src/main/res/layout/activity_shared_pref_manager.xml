@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ashokvarma.sharedprefmanager.SharedPrefManagerActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/sharedpref_manager_appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/sharedpref_manager_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="end" />
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="end" />
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v7.widget.AppCompatSpinner
+        android:id="@+id/sharedpref_manager_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:padding="16dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/sharedpref_manager_app_divider_color" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/sharedpref_manager_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="92dp" />
+
+        <TextView
+            android:id="@+id/sqlite_manager_error_layout"
+            style="@style/sharedpref_manager_mtxt_subheading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="32dp"
+            android:textColor="@color/sharedpref_manager_txt_error"
+            tools:text="test" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/sqlite_manager_add_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:src="@drawable/ic_action_add_white"
+            app:fabSize="normal"
+            app:useCompatPadding="true" />
+
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,18 @@
+<resources>
+    <string name="sharedpref_manager_app_name">Shared Pref Manager</string>
+    <string name="sharedpref_manager_no_data">No Values in this Shared Pref File</string>
+    <string name="sharedpref_manager_refresh_sharedpref">Refresh SharedPref</string>
+    <string name="sharedpref_manager_clear_sharedpref">Clear Shared Preference</string>
+    <string name="sharedpref_manager_edit_key_title">Edit %1$s in %2$s</string>
+    <string name="sharedpref_manager_add_item_title">Add new item to %1$s</string>
+    <string name="sharedpref_manager_update">Update</string>
+    <string name="sharedpref_manager_cancel">Cancel</string>
+    <string name="sharedpref_manager_invalid_key_exception">Please Enter Valid Key</string>
+    <string name="sharedpref_manager_int_parse_exception">Please Enter Valid Integer</string>
+    <string name="sharedpref_manager_long_parse_exception">Please Enter Valid Long</string>
+    <string name="sharedpref_manager_float_parse_exception">Please Enter Valid Float</string>
+    <string name="sharedpref_manager_set_parse_exception">Please Enter Valid Set it should be in the form of [a,b,c]</string>
+    <string name="sharedpref_manager_unknown_exception">Something went wrong try again</string>
+    <string name="sharedpref_manager_clear">clear</string>
+    <string name="sharedpref_manager_clear_dialog_message">All the Data in this Shared Preference will be lost.\nDo You want to clear current Shared Preference?</string>
+</resources>

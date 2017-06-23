@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ashokvarma.sharedprefmanager">
+
+    <application>
+        <activity
+            android:name=".SharedPrefManagerActivity"
+            android:label="@string/sharedpref_manager_app_name"
+            android:launchMode="singleTask"
+            android:taskAffinity="com.ashokvarma.sqlitemanager.task"
+            android:theme="@style/SharedPrefManager.Theme" />
+    </application>
+
+</manifest>
