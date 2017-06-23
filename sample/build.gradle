@@ -18,12 +18,12 @@ android {
         versionCode rootProject.ext.LIBRARY_VERSION_CODE
         versionName rootProject.ext.LIBRARY_VERSION_NAME
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.release
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
         }
     }
 }

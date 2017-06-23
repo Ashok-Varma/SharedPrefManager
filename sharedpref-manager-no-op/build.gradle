@@ -1,5 +1,29 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'SharedPrefManager'
+
+    publishedGroupId = 'com.ashokvarma.android'
+    libraryName = 'SharedPref Manager'
+    artifact = 'sharedpref-manager'
+
+    libraryDescription = 'SharedPref Manager helps to manage your android Shared Preferences very effectively with ease'
+
+    siteUrl = 'https://github.com/Ashok-Varma/SharedPrefManager'
+    gitUrl = 'https://github.com/Ashok-Varma/SharedPrefManager.git'
+
+    libraryVersion = rootProject.ext.LIBRARY_VERSION_NAME
+
+    developerId = 'Ashok-Varma'
+    developerName = 'Ashok Varma'
+    developerEmail = 'ashokvitece@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -19,3 +43,7 @@ android {
         }
     }
 }
+
+// Place it at the end of the file
+apply from: 'install_lib.gradle'
+apply from: 'bintray_lib.gradle'
