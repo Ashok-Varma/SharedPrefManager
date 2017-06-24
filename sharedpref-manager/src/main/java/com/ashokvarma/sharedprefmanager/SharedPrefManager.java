@@ -20,11 +20,11 @@ public class SharedPrefManager {
     public static void launchSharedPrefManager(Context context, ArrayList<String> privateSharedPrefNames, ArrayList<String> worldReadSharedPrefNames, ArrayList<String> worldWriteSharedPrefNames) {
         boolean worldModeSupported = Build.VERSION.SDK_INT < Build.VERSION_CODES.N;
 
-        int totalLength =
-                (privateSharedPrefNames == null ? 0 : privateSharedPrefNames.size())
-                        + (worldModeSupported ? (worldReadSharedPrefNames == null ? 0 : worldReadSharedPrefNames.size()) + (worldWriteSharedPrefNames == null ? 0 : worldWriteSharedPrefNames.size()) : 0);
+        int worldModeSharedPrefCount = (worldReadSharedPrefNames == null ? 0 : worldReadSharedPrefNames.size()) + (worldWriteSharedPrefNames == null ? 0 : worldWriteSharedPrefNames.size());
+        int worldModeSupportedSharedPrefCount = worldModeSupported ? worldModeSharedPrefCount : 0;
+        int totalSupportedSharedPrefCount = (privateSharedPrefNames == null ? 0 : privateSharedPrefNames.size()) + worldModeSupportedSharedPrefCount;
 
-        if (totalLength == 0) {
+        if (totalSupportedSharedPrefCount == 0) {
             Toast.makeText(context, "No Supported Shared Pref Names so skipping activity call", Toast.LENGTH_LONG).show();
             return;
         }
@@ -36,7 +36,8 @@ public class SharedPrefManager {
             intent.putStringArrayListExtra(SharedPrefManagerActivity.WORLD_READ_SHARED_PREF_NAMES, worldReadSharedPrefNames);
             intent.putStringArrayListExtra(SharedPrefManagerActivity.WORLD_WRITE_SHARED_PREF_NAMES, worldWriteSharedPrefNames);
         } else {
-            Toast.makeText(context, "MODE_WORLD_READABLE, MODE_WORLD_WRITEABLE are not supported above Android N (Nougat)", Toast.LENGTH_LONG).show();
+            if (worldModeSharedPrefCount != 0)
+                Toast.makeText(context, "MODE_WORLD_READABLE, MODE_WORLD_WRITEABLE are not supported above Android N (Nougat)", Toast.LENGTH_LONG).show();
         }
         context.startActivity(intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
     }

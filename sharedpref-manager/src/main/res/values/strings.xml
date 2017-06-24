@@ -7,6 +7,7 @@
     <string name="sharedpref_manager_add_item_title">Add new item to %1$s</string>
     <string name="sharedpref_manager_update">Update</string>
     <string name="sharedpref_manager_cancel">Cancel</string>
+    <string name="sharedpref_manager_delete">Delete</string>
     <string name="sharedpref_manager_invalid_key_exception">Please Enter Valid Key</string>
     <string name="sharedpref_manager_int_parse_exception">Please Enter Valid Integer</string>
     <string name="sharedpref_manager_long_parse_exception">Please Enter Valid Long</string>

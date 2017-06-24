@@ -132,7 +132,7 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
 
         final TextInputEditText keyString = (TextInputEditText) dialogView.findViewById(R.id.sharedpref_manager_dialog_key_edit_text);
 
-        final AlertDialog alertDialog = new AlertDialog
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog
                 .Builder(this)
                 .setView(dialogView)
                 .setTitle(isEdit ? getString(R.string.sharedpref_manager_edit_key_title, sharedPrefItemModel.getKey(), selectedSharedPref) : getString(R.string.sharedpref_manager_add_item_title, selectedSharedPref))
@@ -141,8 +141,20 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
                     public void onClick(DialogInterface dialog, int whichButton) {
                         dialog.dismiss();
                     }
-                })
-                .create();
+                });
+
+        if (isEdit) {
+            alertDialogBuilder.
+                    setNeutralButton(R.string.sharedpref_manager_delete, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            mSharedPrefManagerPresenter.deleteSharedPrefItem(sharedPrefItemModel.getKey(), selectedSharedPref);
+                            dialog.dismiss();
+                        }
+                    });
+        }
+
+        final AlertDialog alertDialog = alertDialogBuilder.create();
 
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override

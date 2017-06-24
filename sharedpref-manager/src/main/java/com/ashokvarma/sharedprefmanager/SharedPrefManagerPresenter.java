@@ -24,7 +24,7 @@ import java.util.Set;
  * @see SharedPrefManagerView
  * @since 22 Jun 2017
  */
-public class SharedPrefManagerPresenter {
+class SharedPrefManagerPresenter {
 
     private LinkedHashMap<String, SharedPreferences> mLinkedNameSharedPrefMap = new LinkedHashMap<>();
     private String mSelectedSharedPref;
@@ -122,6 +122,11 @@ public class SharedPrefManagerPresenter {
 
     void onAddPrefItemClicked() {
         getView().showAddEditPrefItemDialog(false, null, mSelectedSharedPref, sharedPrefSupportedTypes, 0);
+    }
+
+    void deleteSharedPrefItem(String sharedPrefItemModelKey, String selectedSharedPref) {
+        mLinkedNameSharedPrefMap.get(selectedSharedPref).edit().remove(sharedPrefItemModelKey).apply();
+        refreshCurrentSharedPref();
     }
 
     @StringRes

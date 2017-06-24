@@ -50,7 +50,7 @@ class SharedPrefAdapter extends RecyclerView.Adapter<SharedPrefAdapter.ViewHolde
         notifyDataSetChanged();
     }
 
-    public void setListener(Listener listener) {
+    void setListener(Listener listener) {
         this.mListener = listener;
     }
 
