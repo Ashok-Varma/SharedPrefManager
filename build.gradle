@@ -32,6 +32,6 @@ ext {
 
     supportLibVersion = '25.3.1'
 
-    LIBRARY_VERSION_NAME = "0.9.2"
-    LIBRARY_VERSION_CODE = 3
+    LIBRARY_VERSION_NAME = "0.9.3"
+    LIBRARY_VERSION_CODE = 4
 }

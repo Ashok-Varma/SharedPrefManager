@@ -38,6 +38,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:$supportLibVersion"
     compile "com.android.support.constraint:constraint-layout:1.0.2"
 
-    debugCompile project(':sharedpref-manager')
-    releaseCompile project(':sharedpref-manager-no-op')
+    compile project(':sharedpref-manager')
+//    debugCompile project(':sharedpref-manager')
+//    releaseCompile project(':sharedpref-manager-no-op')
 }
