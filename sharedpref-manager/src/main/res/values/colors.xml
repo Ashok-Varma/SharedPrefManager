@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="sharedpref_manager_colorPrimary">#00BCD4</color>
-    <color name="sharedpref_manager_colorPrimaryDark">#0097A7</color>
-    <color name="sharedpref_manager_colorAccent">#FF9800</color>
+    <color name="sharedpref_manager_colorPrimary">#1976d2</color>
+    <color name="sharedpref_manager_colorPrimaryDark">#0d47a1</color>
+    <color name="sharedpref_manager_colorAccent">#ff6e40</color>
 
     <color name="sharedpref_manager_app_divider_color">#1f000000</color>
 

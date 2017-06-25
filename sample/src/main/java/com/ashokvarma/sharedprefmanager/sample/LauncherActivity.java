@@ -78,6 +78,19 @@ public class LauncherActivity extends AppCompatActivity {
                         );
             }
         });
+
+        findViewById(R.id.launch_manager_wo_world).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPrefManager
+                        .launchSharedPrefManager(
+                                LauncherActivity.this
+                                , new ArrayList<>(Arrays.asList(new String[]{SP_PRI_APP, SP_PRI_USER, SP_PRI_DATABASE, SP_PRI_TUTS, SP_PRI_NO_DATA}))
+                                , null
+                                , null
+                        );
+            }
+        });
     }
 
     @SuppressLint("ApplySharedPref")
