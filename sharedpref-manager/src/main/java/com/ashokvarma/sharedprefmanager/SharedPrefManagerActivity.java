@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.pm.ApplicationInfo;
 import android.os.Bundle;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -41,6 +42,8 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
     private TextView mErrorText;
     private Toolbar mToolbar;
 
+    private MenuItem mSortItem;
+
     private SharedPrefAdapter mSharedPrefAdapter;
     private SharedPrefManagerPresenter mSharedPrefManagerPresenter;
 
@@ -52,9 +55,9 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
         mSharedPrefManagerPresenter = new SharedPrefManagerPresenter(getIntent().getExtras(), this);
 
         mSharedPrefSelectionSpinner = (AppCompatSpinner) findViewById(R.id.sharedpref_manager_spinner);
-        mAddFab = (FloatingActionButton) findViewById(R.id.sqlite_manager_add_fab);
+        mAddFab = (FloatingActionButton) findViewById(R.id.sharedpref_manager_add_fab);
         mSharedPrefRecyclerView = (RecyclerView) findViewById(R.id.sharedpref_manager_recycler_view);
-        mErrorText = (TextView) findViewById(R.id.sqlite_manager_error_layout);
+        mErrorText = (TextView) findViewById(R.id.sharedpref_manager_error_layout);
 
         mToolbar = (Toolbar) findViewById(R.id.sharedpref_manager_toolbar);
         setSupportActionBar(mToolbar);
@@ -207,6 +210,13 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
     }
 
     @Override
+    public void changeSortIcon(@DrawableRes int drawableRes) {
+        if (mSortItem != null) {
+            mSortItem.setIcon(drawableRes);
+        }
+    }
+
+    @Override
     public void onSharedPrefItemClicked(SharedPrefItemModel sharedPrefItemModel) {
         mSharedPrefManagerPresenter.onSharedPrefItemClicked(sharedPrefItemModel);
     }
@@ -225,6 +235,10 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.sharedpref_manager_menu, menu);
+        mSortItem = menu.findItem(R.id.action_sharedpref_sort);
+        if (mSharedPrefManagerPresenter != null) {
+            mSharedPrefManagerPresenter.refreshSortIcon();
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -232,7 +246,10 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int i = item.getItemId();
-        if (i == R.id.action_sharedpref_refresh) {
+        if (i == R.id.action_sharedpref_sort) {
+            mSharedPrefManagerPresenter.toggleSort();
+            return true;
+        } else if (i == R.id.action_sharedpref_refresh) {
             mSharedPrefManagerPresenter.refreshCurrentSharedPref();
             return true;
         } else if (i == R.id.action_sharedpref_clear) {
@@ -245,7 +262,7 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.sqlite_manager_add_fab) {
+        if (v.getId() == R.id.sharedpref_manager_add_fab) {
             mSharedPrefManagerPresenter.onAddPrefItemClicked();
         }
     }

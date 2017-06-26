@@ -2,6 +2,7 @@
     <string name="sharedpref_manager_app_name">Shared Pref Manager</string>
     <string name="sharedpref_manager_no_data">No Values in this Shared Pref File</string>
     <string name="sharedpref_manager_refresh_sharedpref">Refresh SharedPref</string>
+    <string name="sharedpref_manager_sort_sharedpref">Sort SharedPref</string>
     <string name="sharedpref_manager_clear_sharedpref">Clear Shared Preference</string>
     <string name="sharedpref_manager_edit_key_title">Edit %1$s in %2$s</string>
     <string name="sharedpref_manager_add_item_title">Add new item to %1$s</string>

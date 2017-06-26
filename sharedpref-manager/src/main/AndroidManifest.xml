@@ -7,7 +7,7 @@
             android:name=".SharedPrefManagerActivity"
             android:label="@string/sharedpref_manager_app_name"
             android:launchMode="singleTask"
-            android:taskAffinity="com.ashokvarma.sqlitemanager.task"
+            android:taskAffinity="com.ashokvarma.sharedprefmanager.task"
             android:theme="@style/SharedPrefManager.Theme" />
     </application>
 

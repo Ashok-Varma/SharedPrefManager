@@ -58,7 +58,7 @@
             android:paddingBottom="92dp" />
 
         <TextView
-            android:id="@+id/sqlite_manager_error_layout"
+            android:id="@+id/sharedpref_manager_error_layout"
             style="@style/sharedpref_manager_mtxt_subheading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
             tools:text="test" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/sqlite_manager_add_fab"
+            android:id="@+id/sharedpref_manager_add_fab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"

@@ -8,6 +8,10 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /**
  * Class description
  *
@@ -29,7 +33,22 @@ class SharedPrefItemModel implements Comparable<SharedPrefItemModel> {
         this.mKey = key;
         this.mValue = value;
 
-        SpannableString textToDisplay = new SpannableString(key + " \n\n " + mValue);
+        String valueString = mValue.toString();
+
+        if (mValue instanceof String) {
+            // check if there is a better way  to do this
+            try {
+                valueString = new JSONObject(valueString).toString(4);
+            } catch (JSONException ex) {
+                try {
+                    valueString = new JSONArray(valueString).toString(4);
+                } catch (JSONException ex1) {
+
+                }
+            }
+        }
+
+        SpannableString textToDisplay = new SpannableString(key + " \n\n " + valueString);
 
         textToDisplay.setSpan(new ForegroundColorSpan(keyColor), 0, mKey.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         textToDisplay.setSpan(new StyleSpan(android.graphics.Typeface.BOLD), 0, mKey.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);

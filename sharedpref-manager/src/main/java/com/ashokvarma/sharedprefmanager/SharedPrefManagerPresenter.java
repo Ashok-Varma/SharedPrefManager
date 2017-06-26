@@ -10,6 +10,8 @@ import android.text.TextUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -28,6 +30,7 @@ class SharedPrefManagerPresenter {
 
     private LinkedHashMap<String, SharedPreferences> mLinkedNameSharedPrefMap = new LinkedHashMap<>();
     private String mSelectedSharedPref;
+    private boolean mIsAscendingSort = true;
 
     private static final ArrayList<String> sharedPrefSupportedTypes = new ArrayList<>();
 
@@ -75,7 +78,7 @@ class SharedPrefManagerPresenter {
         initView();
     }
 
-    void unBindView(SharedPrefManagerView sqliteManagerView) {
+    void unBindView(SharedPrefManagerView sharedPrefManagerView) {
         mSharedPrefManagerView = null;
     }
 
@@ -94,9 +97,16 @@ class SharedPrefManagerPresenter {
             sharedPrefItemModels.add(new SharedPrefItemModel(key, prefs.get(key), ContextCompat.getColor(getView().getViewContext(), R.color.sharedpref_manager_colorAccent)));
         }
 
+        refreshSortIcon();
         if (sharedPrefItemModels.isEmpty()) {
             getView().showNoPrefItemsView();
         } else {
+            Collections.sort(sharedPrefItemModels, new Comparator<SharedPrefItemModel>() {
+                @Override
+                public int compare(SharedPrefItemModel sharedPrefItemModel1, SharedPrefItemModel sharedPrefItemModel2) {
+                    return (mIsAscendingSort ? 1 : -1) * sharedPrefItemModel1.compareTo(sharedPrefItemModel2);
+                }
+            });
             getView().displaySharedPrefItems(sharedPrefItemModels);
         }
 
@@ -110,6 +120,19 @@ class SharedPrefManagerPresenter {
     void clearCurrentSharedPref() {
         mLinkedNameSharedPrefMap.get(mSelectedSharedPref).edit().clear().commit();
         loadDataForSharedPref(mSelectedSharedPref);
+    }
+
+    void toggleSort() {
+        mIsAscendingSort = !mIsAscendingSort;
+        loadDataForSharedPref(mSelectedSharedPref);
+    }
+
+    void refreshSortIcon(){
+        if (mIsAscendingSort) {
+            getView().changeSortIcon(R.drawable.ic_sort_ascending_white_24dp);
+        } else {
+            getView().changeSortIcon(R.drawable.ic_sort_descending_white_24dp);
+        }
     }
 
     void refreshCurrentSharedPref() {
