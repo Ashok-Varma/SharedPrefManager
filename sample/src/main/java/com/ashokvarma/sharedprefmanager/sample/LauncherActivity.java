@@ -20,16 +20,16 @@ import java.util.HashSet;
 
 public class LauncherActivity extends AppCompatActivity {
 
-    private static final String SP_PRI_APP = "App SharedPref";
-    private static final String SP_PRI_USER_JSON = "User Json SharedPref";
-    private static final String SP_PRI_LONG_DATA = "Long Data SharedPref";
-    private static final String SP_PRI_10_000_ENTRY = "10,000 entry SharedPref";
-    private static final String SP_PRI_NO_DATA = "No Data SharedPref";
+    private static final String SP_PRI_APP = "App data SP";
+    private static final String SP_PRI_USER_JSON = "User Json SP";
+    private static final String SP_PRI_LONG_DATA = "Long Data SP";
+    private static final String SP_PRI_15_000_ENTRY = "15,000 entry SP";
+    private static final String SP_PRI_NO_DATA = "No Data SP";
 
-    private static final String SP_WORLD_READ_USER = "User SharedPref Read";
-    private static final String SP_WORLD_READ_DATABASE = "Database SharedPref Read";
+    private static final String SP_WORLD_READ_USER = "User Json SP Read";
+    private static final String SP_WORLD_READ_DATABASE = "Database SP Read";
 
-    private static final String SP_WORLD_WRITE_USER = "User SharedPref Write";
+    private static final String SP_WORLD_WRITE_USER = "User Long SP Write";
 
     @Override
     @SuppressLint({"WorldReadableFiles", "WorldWriteableFiles"})
@@ -43,13 +43,13 @@ public class LauncherActivity extends AppCompatActivity {
                 floodExtremes(getSharedPreferences(SP_PRI_APP, MODE_PRIVATE));
                 floodJsons(getSharedPreferences(SP_PRI_USER_JSON, MODE_PRIVATE));
                 floodLongNames(getSharedPreferences(SP_PRI_LONG_DATA, MODE_PRIVATE));
-                floodLargeDataSet(getSharedPreferences(SP_PRI_10_000_ENTRY, MODE_PRIVATE));
+                floodLargeDataSet(getSharedPreferences(SP_PRI_15_000_ENTRY, MODE_PRIVATE));
 
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                     floodJsons(getSharedPreferences(SP_WORLD_READ_USER, MODE_WORLD_READABLE));
                     floodExtremes(getSharedPreferences(SP_WORLD_READ_DATABASE, MODE_WORLD_READABLE));
 
-                    floodExtremes(getSharedPreferences(SP_WORLD_WRITE_USER, MODE_WORLD_WRITEABLE));
+                    floodLongNames(getSharedPreferences(SP_WORLD_WRITE_USER, MODE_WORLD_WRITEABLE));
                 }
             }
         });
@@ -60,7 +60,7 @@ public class LauncherActivity extends AppCompatActivity {
                 clearData(getSharedPreferences(SP_PRI_APP, MODE_PRIVATE));
                 clearData(getSharedPreferences(SP_PRI_USER_JSON, MODE_PRIVATE));
                 clearData(getSharedPreferences(SP_PRI_LONG_DATA, MODE_PRIVATE));
-                clearData(getSharedPreferences(SP_PRI_10_000_ENTRY, MODE_PRIVATE));
+                clearData(getSharedPreferences(SP_PRI_15_000_ENTRY, MODE_PRIVATE));
 
                 if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
                     clearData(getSharedPreferences(SP_WORLD_READ_USER, MODE_WORLD_READABLE));
@@ -77,7 +77,7 @@ public class LauncherActivity extends AppCompatActivity {
                 SharedPrefManager
                         .launchSharedPrefManager(
                                 LauncherActivity.this
-                                , new ArrayList<>(Arrays.asList(new String[]{SP_PRI_APP, SP_PRI_USER_JSON, SP_PRI_LONG_DATA, SP_PRI_10_000_ENTRY, SP_PRI_NO_DATA}))
+                                , new ArrayList<>(Arrays.asList(new String[]{SP_PRI_APP, SP_PRI_USER_JSON, SP_PRI_LONG_DATA, SP_PRI_15_000_ENTRY, SP_PRI_NO_DATA}))
                                 , new ArrayList<>(Arrays.asList(new String[]{SP_WORLD_READ_USER, SP_WORLD_READ_DATABASE}))
                                 , new ArrayList<>(Arrays.asList(new String[]{SP_WORLD_WRITE_USER}))
                         );
@@ -90,7 +90,7 @@ public class LauncherActivity extends AppCompatActivity {
                 SharedPrefManager
                         .launchSharedPrefManager(
                                 LauncherActivity.this
-                                , new ArrayList<>(Arrays.asList(new String[]{SP_PRI_APP, SP_PRI_USER_JSON, SP_PRI_LONG_DATA, SP_PRI_10_000_ENTRY, SP_PRI_NO_DATA}))
+                                , new ArrayList<>(Arrays.asList(new String[]{SP_PRI_APP, SP_PRI_USER_JSON, SP_PRI_LONG_DATA, SP_PRI_15_000_ENTRY, SP_PRI_NO_DATA}))
                                 , null
                                 , null
                         );
@@ -147,22 +147,23 @@ public class LauncherActivity extends AppCompatActivity {
 
     public void floodLargeDataSet(SharedPreferences sharedPreferences) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        for (int i = 0; i < 10_000; i++) {
+        for (int i = 0; i < 1_000; i++) {
             editor
-                    .putLong("long_max" + i, Long.MAX_VALUE)
-                    .putLong("long_min" + i, Long.MIN_VALUE)
-                    .putLong("long" + i, 100L)
-                    .putInt("int_max" + i, Integer.MAX_VALUE)
-                    .putInt("int_min" + i, Integer.MIN_VALUE)
-                    .putInt("int" + i, 100)
-                    .putFloat("float_max" + i, Float.MAX_VALUE)
-                    .putFloat("float_min" + i, Float.MIN_VALUE)
-                    .putFloat("float" + i, 100)
-                    .putBoolean("boolean_false" + i, false)
-                    .putBoolean("boolean_true" + i, true)
-                    .putString("string_empty" + i, "")
-                    .putString("string" + i, "String")
-                    .putStringSet("string_set" + i, new HashSet<>(Arrays.asList(new String[]{"set1", "set2", "set3", "set1"})));
+                    .putLong("long_max " + i, Long.MAX_VALUE)
+                    .putLong("long_min " + i, Long.MIN_VALUE)
+                    .putLong("long " + i, i * 100L)
+                    .putInt("int_max " + i, Integer.MAX_VALUE)
+                    .putInt("int_min " + i, Integer.MIN_VALUE)
+                    .putInt("int " + i, i)
+                    .putFloat("float_max " + i, Float.MAX_VALUE)
+                    .putFloat("float_min " + i, Float.MIN_VALUE)
+                    .putFloat("float " + i, i * 100.001F)
+                    .putBoolean("boolean_false " + i, false)
+                    .putBoolean("boolean_true " + i, true)
+                    .putBoolean("boolean " + i, i % 2 == 0)
+                    .putString("string_empty " + i, "")
+                    .putString("string " + i, "String" + i)
+                    .putStringSet("string_set " + i, new HashSet<>(Arrays.asList(new String[]{"set" + i, "set" + (i + 1), "set" + (i + 2)})));
         }
         editor.apply();
     }
@@ -170,12 +171,9 @@ public class LauncherActivity extends AppCompatActivity {
     public void floodLongNames(SharedPreferences sharedPreferences) {
         sharedPreferences
                 .edit()
-                .putLong("test big name ", Long.MAX_VALUE)
-                .putInt("int_max", Integer.MAX_VALUE)
-                .putFloat("float_max", Float.MAX_VALUE)
-                .putBoolean("boolean_false", false)
-                .putString("string", "String")
-                .putStringSet("string_set", new HashSet<>(Arrays.asList(new String[]{"set1", "set2", "set3", "set1"})))
+                .putString("Kotlin", getString(R.string.kotlin_android))
+                .putString("The quick brown fox jumps over the lazy dog is an English-language pangram—a sentence that contains all of the letters of the alphabet. It is commonly used for touch-typing practice, testing typewriters and computer keyboards, displaying examples of fonts, and other applications involving text where the use of all letters in the alphabet is desired. Owing to its brevity and coherence, it has become widely known.", "value")
+                .putStringSet("Kotlin_3", new HashSet<>(Arrays.asList(new String[]{1 + getString(R.string.kotlin_android), 2 + getString(R.string.kotlin_android), 3 + getString(R.string.kotlin_android)})))
                 .apply();
     }
 

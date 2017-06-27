@@ -113,7 +113,7 @@ class SharedPrefManagerPresenter {
     }
 
     void onClearCurrentSharedPrefClicked() {
-        getView().showDeleteConfirmationDialog();
+        getView().showDeleteConfirmationDialog(mSelectedSharedPref);
     }
 
     @SuppressLint("ApplySharedPref")

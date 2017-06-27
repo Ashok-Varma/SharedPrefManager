@@ -33,5 +33,5 @@ interface SharedPrefManagerView {
 
     void showAddEditPrefItemDialog(boolean isEdit, @Nullable SharedPrefItemModel sharedPrefItemModel, String selectedSharedPref, ArrayList<String> sharedPrefSupportedTypes, int preSelectTypePosition);
 
-    void showDeleteConfirmationDialog();
+    void showDeleteConfirmationDialog(String sharedPrefName);
 }

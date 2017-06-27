@@ -8,13 +8,13 @@
         app:showAsAction="always" />
     <item
         android:id="@+id/action_sharedpref_refresh"
-        android:icon="@drawable/ic_action_refresh_white"
+        android:icon="@drawable/ic_refresh_white_24dp"
         android:title="@string/sharedpref_manager_refresh_sharedpref"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/action_sharedpref_clear"
-        android:icon="@drawable/ic_action_delete_forever_white"
+        android:icon="@drawable/ic_delete_forever_white_24dp"
         android:title="@string/sharedpref_manager_clear_sharedpref"
         app:showAsAction="always" />
 </menu>

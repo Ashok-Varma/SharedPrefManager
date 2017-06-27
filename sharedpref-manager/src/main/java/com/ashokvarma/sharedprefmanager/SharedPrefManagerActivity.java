@@ -188,11 +188,11 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
     }
 
     @Override
-    public void showDeleteConfirmationDialog() {
+    public void showDeleteConfirmationDialog(String sharedPrefName) {
         new AlertDialog
                 .Builder(this)
-                .setTitle(R.string.sharedpref_manager_clear_sharedpref)
-                .setMessage(R.string.sharedpref_manager_clear_dialog_message)
+                .setTitle(getString(R.string.sharedpref_manager_clear_sharedpref, sharedPrefName))
+                .setMessage(getString(R.string.sharedpref_manager_clear_dialog_message, sharedPrefName, sharedPrefName))
                 .setPositiveButton(R.string.sharedpref_manager_clear, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

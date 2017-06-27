@@ -1,5 +1,7 @@
 # SharedPref Manager
 
+**get sample apk from [Google Play Store][googlePlayStoreLink]**
+
 ## What is this library about?
 SharedPref Manager helps to manage your android Shared Preferences very effectively with ease
 
@@ -18,12 +20,12 @@ Based on your IDE you can import library in one of the following ways
 
 Gradle:
 ```groovy
-debugCompile 'com.ashokvarma.android:sharedpref-manager:1.0.0'
-releaseCompile 'com.ashokvarma.android:sharedpref-manager-no-op:1.0.0'
+debugCompile 'com.ashokvarma.android:sharedpref-manager:1.0.1'
+releaseCompile 'com.ashokvarma.android:sharedpref-manager-no-op:1.0.1'
 ```
 If you want this in library in production also then try this : 
 ```groovy
-compile 'com.ashokvarma.android:sharedpref-manager:1.0.0'
+compile 'com.ashokvarma.android:sharedpref-manager:1.0.1'
 ```
 
 
@@ -32,14 +34,14 @@ or grab via Maven:
 <dependency>
   <groupId>com.ashokvarma.android</groupId>
   <artifactId>sharedpref-manager</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <type>pom</type>
 </dependency>
 ```
 
 or Ivy:
 ```xml
-<dependency org='com.ashokvarma.android' name='sharedpref-manager' rev='1.0.0'>
+<dependency org='com.ashokvarma.android' name='sharedpref-manager' rev='1.0.1'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -81,3 +83,4 @@ See the License for the specific language governing permissions and
 limitations under the License.
 ```
 [mavenLatestJarDownload]: https://search.maven.org/remote_content?g=com.ashokvarma.android&a=sharedpref-manager&v=LATEST
+[googlePlayStoreLink]: https://play.google.com/store/apps/details?id=com.ashokvarma.sharedprefmanager.sample
