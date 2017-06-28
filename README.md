@@ -2,6 +2,8 @@
 
 **get sample apk from [Google Play Store][googlePlayStoreLink]**
 
+<img src="https://raw.githubusercontent.com/Ashok-Varma/SharedPrefManager/master/sharedpref_320_5_compressed.gif" width="300" height="550" />
+
 ## What is this library about?
 SharedPref Manager helps to manage your android Shared Preferences very effectively with ease
 
@@ -82,5 +84,5 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-[mavenLatestJarDownload]: https://search.maven.org/remote_content?g=com.ashokvarma.android&a=sharedpref-manager&v=LATEST
+[mavenAarDownload]: https://repo1.maven.org/maven2/com/ashokvarma/android/sharedpref-manager/1.0.1/sharedpref-manager-1.0.1.aar
 [googlePlayStoreLink]: https://play.google.com/store/apps/details?id=com.ashokvarma.sharedprefmanager.sample
