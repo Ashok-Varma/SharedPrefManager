@@ -22,12 +22,12 @@ Based on your IDE you can import library in one of the following ways
 
 Gradle:
 ```groovy
-debugCompile 'com.ashokvarma.android:sharedpref-manager:1.0.3'
-releaseCompile 'com.ashokvarma.android:sharedpref-manager-no-op:1.0.3'
+debugCompile 'com.ashokvarma.android:sharedpref-manager:1.0.4'
+releaseCompile 'com.ashokvarma.android:sharedpref-manager-no-op:1.0.4'
 ```
 If you want this in library in production also then try this : 
 ```groovy
-compile 'com.ashokvarma.android:sharedpref-manager:1.0.3'
+compile 'com.ashokvarma.android:sharedpref-manager:1.0.4'
 ```
 
 
@@ -36,14 +36,14 @@ or grab via Maven:
 <dependency>
   <groupId>com.ashokvarma.android</groupId>
   <artifactId>sharedpref-manager</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <type>pom</type>
 </dependency>
 ```
 
 or Ivy:
 ```xml
-<dependency org='com.ashokvarma.android' name='sharedpref-manager' rev='1.0.3'>
+<dependency org='com.ashokvarma.android' name='sharedpref-manager' rev='1.0.4'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -84,5 +84,5 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 ```
-[mavenAarDownload]: https://repo1.maven.org/maven2/com/ashokvarma/android/sharedpref-manager/1.0.3/sharedpref-manager-1.0.3.aar
+[mavenAarDownload]: https://repo1.maven.org/maven2/com/ashokvarma/android/sharedpref-manager/1.0.4/sharedpref-manager-1.0.4.aar
 [googlePlayStoreLink]: https://play.google.com/store/apps/details?id=com.ashokvarma.sharedprefmanager.sample
