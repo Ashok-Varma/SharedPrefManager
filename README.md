@@ -1,3 +1,6 @@
+[![Android Arsenal]( https://img.shields.io/badge/Android%20Arsenal-SharedPrefManager-green.svg?style=flat )]( https://android-arsenal.com/details/1/7047 )
+
+
 # SharedPref Manager
 
 **get sample apk from [Google Play Store][googlePlayStoreLink]**
