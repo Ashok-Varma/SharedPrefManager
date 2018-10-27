@@ -3,6 +3,7 @@ package com.ashokvarma.sharedprefmanager;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,8 +37,9 @@ class SharedPrefAdapter extends RecyclerView.Adapter<SharedPrefAdapter.ViewHolde
         mLayoutInflater = LayoutInflater.from(context);
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = mLayoutInflater.inflate(R.layout.sharedpref_manager_recycler_item, parent, false);
         return new ViewHolder(v);
     }
@@ -55,7 +57,7 @@ class SharedPrefAdapter extends RecyclerView.Adapter<SharedPrefAdapter.ViewHolde
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder vh, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder vh, int position) {
         vh.textView.setText(mSharedPrefItemModelList.get(position).getDisplayText());
     }
 
@@ -69,7 +71,7 @@ class SharedPrefAdapter extends RecyclerView.Adapter<SharedPrefAdapter.ViewHolde
 
         ViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.item_text);
+            textView = itemView.findViewById(R.id.item_text);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -84,12 +86,15 @@ class SharedPrefAdapter extends RecyclerView.Adapter<SharedPrefAdapter.ViewHolde
                 @Override
                 public boolean onLongClick(View view) {
                     ClipboardManager clipboard = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
-                    String clipText = mSharedPrefItemModelList.get(getLayoutPosition()).getValue().toString();
+                    if (clipboard != null) {
+                        String clipText = mSharedPrefItemModelList.get(getLayoutPosition()).getValue().toString();
 
-                    ClipData clip;
-                    clip = ClipData.newPlainText("com.ashokvarma.sharedprefmanager", clipText);
-                    clipboard.setPrimaryClip(clip);
-                    Toast.makeText(mContext, clipText + " - Copied to clipBoard", Toast.LENGTH_SHORT).show();
+                        ClipData clip;
+                        clip = ClipData.newPlainText("com.ashokvarma.sharedprefmanager", clipText);
+
+                        clipboard.setPrimaryClip(clip);
+                        Toast.makeText(mContext, clipText + " - Copied to clipBoard", Toast.LENGTH_SHORT).show();
+                    }
                     return true;
                 }
             });

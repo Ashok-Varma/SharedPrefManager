@@ -15,6 +15,7 @@ import android.support.v7.widget.AppCompatSpinner;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -54,12 +55,12 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
 
         mSharedPrefManagerPresenter = new SharedPrefManagerPresenter(getIntent().getExtras(), this);
 
-        mSharedPrefSelectionSpinner = (AppCompatSpinner) findViewById(R.id.sharedpref_manager_spinner);
-        mAddFab = (FloatingActionButton) findViewById(R.id.sharedpref_manager_add_fab);
-        mSharedPrefRecyclerView = (RecyclerView) findViewById(R.id.sharedpref_manager_recycler_view);
-        mErrorText = (TextView) findViewById(R.id.sharedpref_manager_error_layout);
+        mSharedPrefSelectionSpinner = findViewById(R.id.sharedpref_manager_spinner);
+        mAddFab = findViewById(R.id.sharedpref_manager_add_fab);
+        mSharedPrefRecyclerView = findViewById(R.id.sharedpref_manager_recycler_view);
+        mErrorText = findViewById(R.id.sharedpref_manager_error_layout);
 
-        mToolbar = (Toolbar) findViewById(R.id.sharedpref_manager_toolbar);
+        mToolbar = findViewById(R.id.sharedpref_manager_toolbar);
         setSupportActionBar(mToolbar);
 
         mSharedPrefAdapter = new SharedPrefAdapter(this, null);
@@ -86,7 +87,7 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
 
     @Override
     public void setUpSpinner(Set<String> sharedPrefNames) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sharedPrefNames.toArray(new String[sharedPrefNames.size()]));
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sharedPrefNames.toArray(new String[sharedPrefNames.size()]));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mSharedPrefSelectionSpinner.setAdapter(adapter);
     }
@@ -119,10 +120,13 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
 
     @Override
     public void showAddEditPrefItemDialog(final boolean isEdit, @Nullable final SharedPrefItemModel sharedPrefItemModel, final String selectedSharedPref, ArrayList<String> sharedPrefSupportedTypes, int preSelectTypePosition) {
+        if (isEdit && sharedPrefItemModel == null) {
+            return;
+        }
         LayoutInflater inflater = this.getLayoutInflater();
         final View dialogView = inflater.inflate(R.layout.sharedpref_manager_edit_new_dialog, null);
 
-        final Spinner spinner = (Spinner) dialogView.findViewById(R.id.sharedpref_manager_dialog_spinner);
+        final Spinner spinner = dialogView.findViewById(R.id.sharedpref_manager_dialog_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, sharedPrefSupportedTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -130,10 +134,10 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
 
         dialogView.findViewById(R.id.sharedpref_manager_dialog_key_input_layout).setVisibility(isEdit ? View.GONE : View.VISIBLE);
 
-        final TextInputEditText valueString = (TextInputEditText) dialogView.findViewById(R.id.sharedpref_manager_dialog_value_edit_text);
+        final TextInputEditText valueString = dialogView.findViewById(R.id.sharedpref_manager_dialog_value_edit_text);
         valueString.setText(sharedPrefItemModel == null ? "" : sharedPrefItemModel.getValue().toString());
 
-        final TextInputEditText keyString = (TextInputEditText) dialogView.findViewById(R.id.sharedpref_manager_dialog_key_edit_text);
+        final TextInputEditText keyString = dialogView.findViewById(R.id.sharedpref_manager_dialog_key_edit_text);
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog
                 .Builder(this)
@@ -167,8 +171,8 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
                     public void onClick(View view) {
                         int error = mSharedPrefManagerPresenter
                                 .addOrUpdateSharedPrefItem(
-                                        valueString.getText().toString()
-                                        , isEdit ? sharedPrefItemModel.getKey() : keyString.getText().toString()
+                                        getTextFrom(valueString)
+                                        , isEdit ? sharedPrefItemModel.getKey() : getTextFrom(keyString)
                                         , selectedSharedPref
                                         , spinner.getSelectedItemPosition()
                                 );
@@ -185,6 +189,12 @@ public class SharedPrefManagerActivity extends AppCompatActivity implements Shar
         });
 
         alertDialog.show();
+    }
+
+    @NonNull
+    private String getTextFrom(TextInputEditText textInputEditText) {
+        Editable editable = textInputEditText.getText();
+        return editable == null ? "" : editable.toString();
     }
 
     @Override

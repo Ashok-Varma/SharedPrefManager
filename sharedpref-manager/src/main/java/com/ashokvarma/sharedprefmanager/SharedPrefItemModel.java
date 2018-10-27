@@ -17,7 +17,6 @@ import org.json.JSONObject;
  *
  * @author ashokvarma
  * @version 1.0
- * @see
  * @since 22 Jun 2017
  */
 class SharedPrefItemModel implements Comparable<SharedPrefItemModel> {

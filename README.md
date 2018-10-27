@@ -25,12 +25,12 @@ Based on your IDE you can import library in one of the following ways
 
 Gradle:
 ```groovy
-debugCompile 'com.ashokvarma.android:sharedpref-manager:1.0.5'
-releaseCompile 'com.ashokvarma.android:sharedpref-manager-no-op:1.0.5'
+debugCompile 'com.ashokvarma.android:sharedpref-manager:1.1.0'
+releaseCompile 'com.ashokvarma.android:sharedpref-manager-no-op:1.1.0'
 ```
 If you want this in library in production also then try this : 
 ```groovy
-compile 'com.ashokvarma.android:sharedpref-manager:1.0.5'
+compile 'com.ashokvarma.android:sharedpref-manager:1.1.0'
 ```
 
 
@@ -39,14 +39,14 @@ or grab via Maven:
 <dependency>
   <groupId>com.ashokvarma.android</groupId>
   <artifactId>sharedpref-manager</artifactId>
-  <version>1.0.5</version>
+  <version>1.1.0</version>
   <type>pom</type>
 </dependency>
 ```
 
 or Ivy:
 ```xml
-<dependency org='com.ashokvarma.android' name='sharedpref-manager' rev='1.0.5'>
+<dependency org='com.ashokvarma.android' name='sharedpref-manager' rev='1.1.0'>
   <artifact name='$AID' ext='pom'></artifact>
 </dependency>
 ```
@@ -93,5 +93,5 @@ limitations under the License.
 2. [SqliteManager](https://github.com/Ashok-Varma/SqliteManager) : Sqlite Manager is a Dev Debug tool that helps to manage(Edit, Add, Clear) your android Sqlite Databases.
 3. [BottomNavigation](https://github.com/Ashok-Varma/BottomNavigation) : This Library helps users to use Bottom Navigation Bar (A new pattern from google) with ease and allows ton of customizations.
 
-[mavenAarDownload]: https://repo1.maven.org/maven2/com/ashokvarma/android/sharedpref-manager/1.0.5/sharedpref-manager-1.0.5.aar
+[mavenAarDownload]: https://repo1.maven.org/maven2/com/ashokvarma/android/sharedpref-manager/1.1.0/sharedpref-manager-1.1.0.aar
 [googlePlayStoreLink]: https://play.google.com/store/apps/details?id=com.ashokvarma.sharedprefmanager.sample
